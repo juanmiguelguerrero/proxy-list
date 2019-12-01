@@ -26,16 +26,20 @@ async function proxyListScrapper() {
 
 		let ip = $(element).find('td:first-child').text()
 		let port = $(element).find('td:nth-child(2)').text()
+		let code = $(element).find('td:nth-child(3)').text()
+		let country = $(element).find('td:nth-child(4)').text()
 
 		let proxy = {
 			ip: ip,
-			port: port
+			port: port,
+			code: code,
+			country: country
 		}
 
 		results.push(proxy)
 
-		// Exit when number of results equal 25
-		if (i === 24) return false
+		// Exit when number of results equal 50
+		if (i === 49) return false
 	})
 
 	return results
