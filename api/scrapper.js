@@ -22,11 +22,17 @@ async function proxyListScrapper() {
 	let html = await loadURL(url)
 	let $ = cheerio.load(html)
 
-	$('tr td:first-child', '#proxylisttable tbody').each((i, element) => {
+	$('#proxylisttable tbody tr').each((i, element) => {
 
-		let content = $(element).text()
+		let ip = $(element).find('td:first-child').text()
+		let port = $(element).find('td:nth-child(2)').text()
 
-		results.push(content)
+		let proxy = {
+			ip: ip,
+			port: port
+		}
+
+		results.push(proxy)
 	})
 
 	return results
