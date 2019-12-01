@@ -33,6 +33,9 @@ async function proxyListScrapper() {
 		}
 
 		results.push(proxy)
+
+		// Exit when number of results equal 25
+		if (i === 24) return false
 	})
 
 	return results
